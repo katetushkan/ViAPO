@@ -1,0 +1,294 @@
+openapi: 3.0.0
+info:
+  title: Simple Inventory API
+  description: This is a simple API
+  contact:
+    email: tushkan@fksis.by
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://service-name-g45kpf25aa-lm.a.run.app
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: test
+  description: testing purposes of mathjs lib
+- name: operations
+  description: Operations available to matrices calculations
+paths:
+  /test_math:
+    get:
+      tags:
+      - test
+      summary: testing lib
+      description: |
+        By calling u can test the work of mathjs
+      operationId: testMath
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MatrixSchema'
+                x-content-type: application/json
+      x-swagger-router-controller: Test
+  /operations/sqrt:
+    post:
+      tags:
+      - operations
+      summary: extrat square from each matrix element
+      description: Extracts sqrt
+      operationId: sqrtElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transformed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MatrixSchema'
+                x-content-type: application/json
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/power:
+    post:
+      tags:
+      - operations
+      summary: enter each element into the power of provided number
+      description: Put into the power of a given power
+      operationId: powerElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transformed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/add_number:
+    post:
+      tags:
+      - operations
+      summary: add a number to each element
+      description: Make a calculation for matrix and a number
+      operationId: addElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Matrix to transform
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/add_matrix:
+    post:
+      tags:
+      - operations
+      summary: add two matrices
+      description: Make a calculation for two matrices.
+      operationId: addMatrix
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transformed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatricesSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/transpose:
+    post:
+      tags:
+      - operations
+      summary: transpose matrix
+      description: Transpose matrix
+      operationId: transposeElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transposed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/determinant:
+    post:
+      tags:
+      - operations
+      summary: Define matrix' determinant
+      description: Define matrix' determinant
+      operationId: determinantElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Matrix' determinant
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/resize:
+    post:
+      tags:
+      - operations
+      summary: Resize matrix
+      description: Resize matrix
+      operationId: resizeMatrix
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transformed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResizeSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/replace:
+    post:
+      tags:
+      - operations
+      summary: Replace elemnts in the matrix
+      description: Replace elemnts in the matrix
+      operationId: replaceMatrix
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Transformed matrix
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+  /operations/factorial:
+    post:
+      tags:
+      - operations
+      summary: Define matrix' elemant factorial
+      description: Define matrix' elemant factorial
+      operationId: factorialElement
+      x-google-backend:
+        address: 'https://test-math-g45kpf25aa-lm.a.run.app'
+      requestBody:
+        description: Matrix' factorials
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatrixSchema'
+      responses:
+        "200":
+          description: "Answer: "
+        "400":
+          description: "invalid input, object invalid"
+      x-swagger-router-controller: Operations
+components:
+  schemas:
+    MatrixSchema:
+      required:
+      - matrix
+      type: object
+      properties:
+        matrix:
+          type: string
+          example: "[2,3,4]"
+    MatricesSchema:
+      required:
+        - matrixA
+        - matrixB
+      type: object
+      properties:
+        matrixA:
+          type: string
+          example: "[2,3,4]"
+        matrixB:
+          type: string
+          example: "[2,3,4]"
+    ResizeSchema:
+      required:
+        - matrix
+        - dimensions
+        - number
+      type: object
+      properties:
+        matrix:
+          type: string
+          example: "[2,3,4]"
+        dimensions:
+          type: string
+          example: "[2]"
+        number:
+          type: number
+          example: 5
+    ReplaceSchema:
+      required:
+        - matrix
+        - subset
+        - column
+        - row
+      type: object
+      properties:
+        matrix:
+          type: string
+          example: "[2,3,4]"
+        subset:
+          type: string
+          example: "[2]"
+        column:
+          type: string
+          example: "[1]"
+        row:
+          type: string
+          example: "[0]"
